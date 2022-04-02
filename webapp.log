@@ -1,0 +1,36 @@
+2022/04/02 15:36:32 main.go:17: test
+2022/04/02 15:43:25 main.go:17: test
+2022/04/02 17:29:10 main.go:17: test
+2022/04/02 18:11:05 main.go:17: test
+2022/04/02 18:11:17 main.go:17: test
+2022/04/02 18:11:24 main.go:16: test
+2022/04/02 18:20:20 main.go:16: test
+2022/04/02 18:24:54 main.go:16: test
+2022/04/02 18:25:24 main.go:16: test
+2022/04/02 18:25:47 main.go:16: test
+2022/04/02 18:27:03 main.go:16: test
+2022/04/02 18:27:03 users.go:166: sql: expected 5 destination arguments in Scan, not 4
+2022/04/02 18:27:36 main.go:16: test
+2022/04/02 18:35:33 main.go:16: test
+2022/04/02 18:35:50 main.go:17: test
+2022/04/02 18:52:31 main.go:17: test
+2022/04/02 18:56:03 main.go:17: test
+2022/04/02 19:01:20 main.go:17: test
+2022/04/02 19:01:54 main.go:17: test
+2022/04/02 19:02:57 main.go:17: test
+2022/04/02 19:04:15 main.go:17: test
+2022/04/02 20:15:01 main.go:17: test
+2022/04/02 20:15:39 users.go:167: sql: no rows in result set
+2022/04/02 20:17:57 main.go:17: test
+2022/04/02 20:17:59 users.go:167: sql: no rows in result set
+2022/04/02 20:18:13 main.go:17: test
+2022/04/02 20:18:14 users.go:167: sql: no rows in result set
+2022/04/02 20:19:00 main.go:17: test
+2022/04/02 20:19:01 users.go:167: sql: no rows in result set
+2022/04/02 20:19:23 main.go:17: test
+2022/04/02 20:19:34 users.go:167: sql: no rows in result set
+2022/04/02 20:20:46 main.go:17: test
+2022/04/02 20:20:52 users.go:167: sql: no rows in result set
+2022/04/02 20:21:46 main.go:17: test
+2022/04/02 20:30:23 main.go:17: test
+2022/04/02 22:03:29 main.go:17: test
