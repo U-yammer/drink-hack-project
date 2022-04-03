@@ -6,7 +6,8 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
-	"regexp"
+    "os"
+    "regexp"
 	"strconv"
 )
 
@@ -50,7 +51,9 @@ func StartMainServer() error {
 	// "/todos/save/" として渡すことで，以降に文字列がある場合でもハンドルができる
 	// 第二引数は，チェインしている
 
-	return http.ListenAndServe(":" + config.Config.Port, nil) // handler: nil にするとデフォルトで page not found を返す
+
+    port := os.Getenv("PORT")
+	return http.ListenAndServe(":" + port, nil) // handler: nil にするとデフォルトで page not found を返す
 }
 
 var validPath = regexp.MustCompile("^/todos/(edit|update|delete)/([0-9]+)$") // 正規表現．todos/edit or update/0~9の繰り返し
