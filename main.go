@@ -6,6 +6,7 @@ import (
 	"drink_hack_project/config"
 	"fmt"
 	"log"
+	"os"
 )
 
 func main() {
@@ -39,6 +40,9 @@ func main() {
 	//fmt.Println(u)
 
 	fmt.Println(models.Db)
+
+	port := os.Getenv("PORT")
+	fmt.Println(port)
 
 	controllers.StartMainServer()
 

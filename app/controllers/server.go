@@ -53,6 +53,8 @@ func StartMainServer() error {
 
 
     port := os.Getenv("PORT")
+    fmt.Println(port)
+
 	return http.ListenAndServe(":" + port, nil) // handler: nil にするとデフォルトで page not found を返す
 }
 

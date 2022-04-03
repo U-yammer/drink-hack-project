@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"drink_hack_project/app/models"
+	"fmt"
 	"log"
 	"net/http"
 )
@@ -82,7 +83,17 @@ func authenticate (w http.ResponseWriter, r *http.Request) {
 
 		http.SetCookie(w, &cookie)
 
-		http.Redirect(w, r, "/", 302)
+		user, err := session.GetUserBySession()
+
+		if err != nil {
+			fmt.Println(err)
+		}
+
+		todos, _ := user.GetTodosByUser()
+		user.Todos = todos
+		renderView(w, user, "layout", "private_navbar", "index")
+
+		//http.Redirect(w, r, "/", 302)
 	} else {
 		http.Redirect(w, r, "/login", 302)
 	}
