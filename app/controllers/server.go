@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
+	"regexp"
+	"strconv"
 )
 
 // 動的にhtmlファイルをレンダリングしている
@@ -39,8 +41,36 @@ func StartMainServer() error {
 	http.HandleFunc("/logout", logout)
 	http.HandleFunc("/todos", index)
 	http.HandleFunc("/todos/new", todoNew)
+	http.HandleFunc("/todos/save", todoSave)
+	http.HandleFunc("/todos/edit/", parseURL(todoEdit))
+	http.HandleFunc("/todos/update/", parseURL(todoUpdate))
+	http.HandleFunc("/todos/delete/", parseURL(todoDelete))
+
+
+	// "/todos/save/" として渡すことで，以降に文字列がある場合でもハンドルができる
+	// 第二引数は，チェインしている
 
 	return http.ListenAndServe(":" + config.Config.Port, nil) // handler: nil にするとデフォルトで page not found を返す
+}
+
+var validPath = regexp.MustCompile("^/todos/(edit|update|delete)/([0-9]+)$") // 正規表現．todos/edit or update/0~9の繰り返し
+
+func parseURL(fn func(http.ResponseWriter, *http.Request, int)) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		q := validPath.FindStringSubmatch(r.URL.Path) // マッチする部分があるか？
+		if q == nil {
+			http.NotFound(w, r)
+			return
+		}
+
+		qi, err := strconv.Atoi(q[2]) // strconv = string convert
+		if err != nil {
+			http.NotFound(w, r)
+			return
+		}
+
+		fn(w, r, qi)
+	}
 }
 
 func session(w http.ResponseWriter, r *http.Request) (sess models.Session, err error){
