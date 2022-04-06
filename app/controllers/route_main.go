@@ -19,27 +19,12 @@ import (
 */
 
 func top(w http.ResponseWriter, r *http.Request) {
-	/*file, err := os.Open("app/views/image/account_icon.png")
-	  defer file.Close()
-	  if err != nil {
-	      http.Error(w, err.Error(), http.StatusInternalServerError)
-	      return
-	  }
-	  decodeImage, _, err := image.Decode(file)
-	  buffer := new(bytes.Buffer)
-	  if err := png.Encode(buffer, decodeImage); err != nil {
-	      log.Fatalln("Unable to encode image.")
-	  }
-	  encodeImage := base64.StdEncoding.EncodeToString(buffer.Bytes())
-	  m := map[string]interface{}{
-	      "Image": encodeImage,
-	  }*/
-
 	_, err := session(w, r)
 	if err != nil {
 		renderView(w, "Hello", "layout", "public_navbar", "top")
 	} else {
-		renderView(w, nil, "layout", "private_navbar", "index")
+		//renderView(w, nil, "layout", "private_navbar", "index")
+		http.Redirect(w, r, "/todos", 302)
 	}
 }
 
@@ -83,11 +68,6 @@ func index(w http.ResponseWriter, r *http.Request) {
 		renderView(w, m, "layout", "private_navbar", "index")
 	}
 }
-
-/*
-func private_navbar(w http.ResponseWriter, r *http.Request) {
-   renderView(w, encodeImage, "layout", "private_navbar", "index")
-}*/
 
 func todoNew(w http.ResponseWriter, r *http.Request) {
 	_, err := session(w, r)
