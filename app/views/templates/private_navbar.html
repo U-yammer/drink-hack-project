@@ -1,5 +1,9 @@
-{{ define "navbar" }}
+{{ define "navbar"}}
 <div class="container">
+    <div> Drink Hack </div>
+    <a href="#">
+        <img class="account_icon" src="data:image/png;base64,{{ .Image }}" alt="account">
+    </a>
     <a href="/logout">logout</a>
 </div>
 {{end}}
