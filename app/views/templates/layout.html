@@ -6,15 +6,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>SampleApp</title>
         <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/static/css/form.css">
+        <link rel="stylesheet" href="/static/css/layout.css">
         <link rel="stylesheet" href="/static/css/navbar.css">
+        <link rel="stylesheet" href="/static/css/form.css">
     </head>
 
     <body>
-        {{template "navbar" .}}
-        <div class="container text-center">
-            {{template "content" . }}
+        <header>
+            {{template "navbar" .}}
+        </header>
+        <div class="todos-wrapper">
+            <div class="container text-center">
+                {{template "content" . }}
+            </div>
         </div>
+        <footer>
+            <p class="copyright">&copy; 2022 Hackathon Group3</p>
+        </footer>
     </body>
 
     <script src="/static/js/jquery-3.5.1.min.js"></script>
