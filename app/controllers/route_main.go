@@ -69,6 +69,53 @@ func index(w http.ResponseWriter, r *http.Request) {
     }
 }
 
+func registerDrink(w http.ResponseWriter, r *http.Request) {
+    sess, err := session(w, r)
+    if err != nil {
+        http.Redirect(w, r, "/login", 302)
+    } else {
+        user, err := sess.GetUserBySession()
+        if err != nil {
+            fmt.Println(err)
+        }
+        encodeImage := getEncodePngImage(w, "account_icon.png")
+        m := map[string]interface{}{
+            "Image": encodeImage,
+            "Name":  user.Name,
+        }
+        renderView(w, m, "layout", "private_navbar", "register_drink")
+    }
+}
+
+func todo(w http.ResponseWriter, r *http.Request, id int) {
+    sess, err := session(w, r)
+    if err != nil {
+        http.Redirect(w, r, "/login", 302)
+    } else {
+        user, err := sess.GetUserBySession()
+        if err != nil {
+            fmt.Println(err)
+        }
+        t, err := models.GetTodo(id)
+        if err != nil {
+            log.Println(err)
+        }
+        encodeImage := getEncodePngImage(w, "account_icon.png")
+        m := map[string]interface{}{
+            "Image":       encodeImage,
+            "Name":        user.Name,
+            "Content":     t.Content,
+            "ID":          t.ID,
+            "StartDate":   "2022年4月10日",
+            "EndDate":     "2022年4月12日",
+            "Goal":        "10",
+            "Total":       "5",
+            "Genre":       "ミネラルウォーター",
+            "Description": "水をたくさん飲みましょう",
+        }
+        renderView(w, m, "layout", "private_navbar", "todo")
+    }
+}
 func todoNew(w http.ResponseWriter, r *http.Request) {
     sess, err := session(w, r)
     if err != nil {
@@ -127,9 +174,14 @@ func todoEdit(w http.ResponseWriter, r *http.Request, id int) {
 
         encodeImage := getEncodePngImage(w, "account_icon.png")
         m := map[string]interface{}{
-            "Image":   encodeImage,
-            "ID":      t.ID,
-            "Content": t.Content,
+            "Image":       encodeImage,
+            "ID":          t.ID,
+            "Content":     t.Content,
+            "StartDate":   "2022年4月10日",
+            "EndDate":     "2022年4月12日",
+            "Goal":        "10",
+            "Genre":       "ミネラルウォーター",
+            "Description": "水をたくさん飲みましょう",
         }
 
         renderView(w, m, "layout", "private_navbar", "todo_edit")

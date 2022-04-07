@@ -1,6 +1,7 @@
 {{ define "content" }}
 <div class="management-wrapper">
     <p>その人の飲み物情報を大きく表示したい</p>
+    <a href="/register_drink">今日の飲料記録</a>
 </div>
 
 <div class="todos-wrapper">
@@ -10,7 +11,7 @@
         </li>
         {{ range .Todos }}
         <li>
-            <a class="todo" href="/todos/edit/{{.ID}}">{{ .Content }}</a>
+            <a class="todo" href="/todos/todo/{{.ID}}">{{ .Content }}</a>
         </li>
         {{ end }}
     </ul>
