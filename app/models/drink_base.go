@@ -2,6 +2,7 @@ package models
 
 import (
     "log"
+    "math/rand"
 )
 
 type Drink struct {
@@ -23,6 +24,17 @@ var d1 DInfo = DInfo{"water", "Drinking 2L of water a day is good for your healt
 var d2 DInfo = DInfo{"tea", "Be careful not to take too much caffeine", 0}
 var d3 DInfo = DInfo{"cola", "Cola contains sugar equivalent to 16 sugar cubes", 0}
 var d4 DInfo = DInfo{"energy drink", "If you want to break your body, drink a lot", 0}
+
+func GetDrinkMessage() (message string) {
+    var d [5]DInfo
+    d[0] = DInfo{"water", "1日に2Lの水を飲むと健康に良いですよ", 0}
+    d[1] = DInfo{"tea", "カフェインの摂りすぎに注意してくださいね", 0}
+    d[2] = DInfo{"cola", "コーラには角砂糖16個分の糖分が含まれているらしいですよ", 0}
+    d[3] = DInfo{"energy drink", "体を壊したいときには, エナジードリンクをたくさん飲みましょう", 0}
+
+    num := rand.Intn(4)
+    return d[num].DDescription
+}
 
 func (u *User) CreateDrink(dName string, amount int) (err error) {
     cmd := `insert into drinks(

@@ -1,6 +1,9 @@
 {{ define "content" }}
+<div class="message">
+    <h3>こんにちは, {{.Name}} さん</h3>
+    <p>{{ .Message }}</p>
+</div>
 <div class="management-wrapper">
-    <p>その人の飲み物情報を大きく表示したい</p>
     <ul>
         {{ range .Drinks }}
         <li>

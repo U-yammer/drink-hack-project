@@ -61,12 +61,15 @@ func index(w http.ResponseWriter, r *http.Request) {
 
         user.Todos = todos
         user.Drinks = drinks
+        drinkMessage := models.GetDrinkMessage()
+        fmt.Println(drinkMessage)
         encodeImage := getEncodePngImage(w, "account_icon.png")
         m := map[string]interface{}{
-            "Image":  encodeImage,
-            "Name":   user.Name,
-            "Todos":  user.Todos,
-            "Drinks": user.Drinks,
+            "Image":   encodeImage,
+            "Name":    user.Name,
+            "Todos":   user.Todos,
+            "Drinks":  user.Drinks,
+            "Message": drinkMessage,
         }
 
         renderView(w, m, "layout", "private_navbar", "index")
