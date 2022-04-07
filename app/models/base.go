@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"github.com/google/uuid"
 	_ "github.com/mattn/go-sqlite3"
-	"go_todo_app/config"
+	"drink_hack_project/config"
 	"log"
 )
 
