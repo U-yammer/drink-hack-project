@@ -9,16 +9,16 @@
         <link rel="stylesheet" href="/static/css/layout.css">
         <link rel="stylesheet" href="/static/css/navbar.css">
         <link rel="stylesheet" href="/static/css/form.css">
+        <link rel="stylesheet" href="/static/css/index.css">
+
     </head>
 
     <body>
         <header>
             {{template "navbar" .}}
         </header>
-        <div class="todos-wrapper">
-            <div class="container text-center">
-                {{template "content" . }}
-            </div>
+        <div class="container text-center">
+            {{template "content" . }}
         </div>
         <footer>
             <p class="copyright">&copy; 2022 Hackathon Group3</p>
