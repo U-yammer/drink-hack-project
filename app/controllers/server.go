@@ -6,8 +6,7 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
-    "os"
-    "regexp"
+	"regexp"
 	"strconv"
 )
 
@@ -34,7 +33,6 @@ func StartMainServer() error {
 	/* プロジェクト内では，"/app/views/" = /static/ とするが，httpアクセスする際はstaticはなくなる */
 	http.Handle("/static/", http.StripPrefix("/static/", files))
 
-
 	http.HandleFunc("/", top)          //  "/" にアクセスすると，topハンドラにルーティングする
 	http.HandleFunc("/signup", signup) //  "/signup" にアクセスすると，signupハンドラをcallする
 	http.HandleFunc("/login", login)
@@ -46,16 +44,12 @@ func StartMainServer() error {
 	http.HandleFunc("/todos/edit/", parseURL(todoEdit))
 	http.HandleFunc("/todos/update/", parseURL(todoUpdate))
 	http.HandleFunc("/todos/delete/", parseURL(todoDelete))
-
+	http.HandleFunc("/register_drink", register)
 
 	// "/todos/save/" として渡すことで，以降に文字列がある場合でもハンドルができる
 	// 第二引数は，チェインしている
 
-
-    port := os.Getenv("PORT")
-    fmt.Println(port)
-
-	return http.ListenAndServe(":" + port, nil) // handler: nil にするとデフォルトで page not found を返す
+	return http.ListenAndServe(":"+config.Config.Port, nil) // handler: nil にするとデフォルトで page not found を返す
 }
 
 var validPath = regexp.MustCompile("^/todos/(edit|update|delete)/([0-9]+)$") // 正規表現．todos/edit or update/0~9の繰り返し
@@ -78,7 +72,7 @@ func parseURL(fn func(http.ResponseWriter, *http.Request, int)) http.HandlerFunc
 	}
 }
 
-func session(w http.ResponseWriter, r *http.Request) (sess models.Session, err error){
+func session(w http.ResponseWriter, r *http.Request) (sess models.Session, err error) {
 	cookie, err := r.Cookie("_cookie")
 	if err == nil {
 		sess = models.Session{
