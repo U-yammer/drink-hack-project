@@ -11,13 +11,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="010e953c-c256-4249-bb1b-27b5fbc81d4e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/route_auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/route_auth.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/route_main.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/route_main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp.log" beforeDir="false" afterPath="$PROJECT_DIR$/webapp.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/base.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/base.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/todo.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/todo.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +92,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Go" />
+    <property name="settings.editor.selected.configurable" value="go.sdk" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -148,33 +144,39 @@
       <screen x="651" y="-1440" width="2048" height="1152" />
     </state>
     <state x="1126" y="-1277" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.720/651.-1440.2048.1152@651.-1440.2048.1152" timestamp="1648868629389" />
-    <state x="1403" y="-1167" key="FileChooserDialogImpl" timestamp="1648865997375">
-      <screen x="651" y="-1440" width="2048" height="1152" />
+    <state x="4780" y="341" key="FileChooserDialogImpl" timestamp="1649060383792">
+      <screen x="3840" y="0" width="2560" height="1440" />
     </state>
+    <state x="4780" y="341" key="FileChooserDialogImpl/0.0.1280.720/3840.0.2560.1440@3840.0.2560.1440" timestamp="1649060383792" />
     <state x="1403" y="-1167" key="FileChooserDialogImpl/0.0.1280.720/651.-1440.2048.1152@651.-1440.2048.1152" timestamp="1648865997375" />
-    <state width="997" height="240" key="GridCell.Tab.0.bottom" timestamp="1649029130667">
-      <screen x="651" y="-1440" width="2048" height="1152" />
+    <state width="1630" height="520" key="GridCell.Tab.0.bottom" timestamp="1649061273863">
+      <screen x="3840" y="0" width="2560" height="1440" />
     </state>
+    <state width="1630" height="520" key="GridCell.Tab.0.bottom/0.0.1280.720/3840.0.2560.1440@3840.0.2560.1440" timestamp="1649061273863" />
     <state width="1227" height="386" key="GridCell.Tab.0.bottom/0.0.1280.720/651.-1440.2048.1152@0.0.1280.720" timestamp="1648909678191" />
     <state width="997" height="240" key="GridCell.Tab.0.bottom/0.0.1280.720/651.-1440.2048.1152@651.-1440.2048.1152" timestamp="1649029130667" />
-    <state width="997" height="240" key="GridCell.Tab.0.center" timestamp="1649029130667">
-      <screen x="651" y="-1440" width="2048" height="1152" />
+    <state width="1630" height="520" key="GridCell.Tab.0.center" timestamp="1649061273863">
+      <screen x="3840" y="0" width="2560" height="1440" />
     </state>
+    <state width="1630" height="520" key="GridCell.Tab.0.center/0.0.1280.720/3840.0.2560.1440@3840.0.2560.1440" timestamp="1649061273863" />
     <state width="1227" height="386" key="GridCell.Tab.0.center/0.0.1280.720/651.-1440.2048.1152@0.0.1280.720" timestamp="1648909678191" />
     <state width="997" height="240" key="GridCell.Tab.0.center/0.0.1280.720/651.-1440.2048.1152@651.-1440.2048.1152" timestamp="1649029130667" />
-    <state width="997" height="240" key="GridCell.Tab.0.left" timestamp="1649029130666">
-      <screen x="651" y="-1440" width="2048" height="1152" />
+    <state width="1630" height="520" key="GridCell.Tab.0.left" timestamp="1649061273863">
+      <screen x="3840" y="0" width="2560" height="1440" />
     </state>
+    <state width="1630" height="520" key="GridCell.Tab.0.left/0.0.1280.720/3840.0.2560.1440@3840.0.2560.1440" timestamp="1649061273863" />
     <state width="1227" height="386" key="GridCell.Tab.0.left/0.0.1280.720/651.-1440.2048.1152@0.0.1280.720" timestamp="1648909678191" />
     <state width="997" height="240" key="GridCell.Tab.0.left/0.0.1280.720/651.-1440.2048.1152@651.-1440.2048.1152" timestamp="1649029130666" />
-    <state width="997" height="240" key="GridCell.Tab.0.right" timestamp="1649029130667">
-      <screen x="651" y="-1440" width="2048" height="1152" />
+    <state width="1630" height="520" key="GridCell.Tab.0.right" timestamp="1649061273863">
+      <screen x="3840" y="0" width="2560" height="1440" />
     </state>
+    <state width="1630" height="520" key="GridCell.Tab.0.right/0.0.1280.720/3840.0.2560.1440@3840.0.2560.1440" timestamp="1649061273863" />
     <state width="1227" height="386" key="GridCell.Tab.0.right/0.0.1280.720/651.-1440.2048.1152@0.0.1280.720" timestamp="1648909678191" />
     <state width="997" height="240" key="GridCell.Tab.0.right/0.0.1280.720/651.-1440.2048.1152@651.-1440.2048.1152" timestamp="1649029130667" />
-    <state x="1090" y="-1305" key="SettingsEditor" timestamp="1648910195671">
-      <screen x="651" y="-1440" width="2048" height="1152" />
+    <state x="4319" y="412" key="SettingsEditor" timestamp="1649060390584">
+      <screen x="3840" y="0" width="2560" height="1440" />
     </state>
+    <state x="4319" y="412" key="SettingsEditor/0.0.1280.720/3840.0.2560.1440@3840.0.2560.1440" timestamp="1649060390584" />
     <state x="127" y="0" key="SettingsEditor/0.0.1280.720/651.-1440.2048.1152@0.0.1280.720" timestamp="1648910028041" />
     <state x="1090" y="-1305" key="SettingsEditor/0.0.1280.720/651.-1440.2048.1152@651.-1440.2048.1152" timestamp="1648910195671" />
     <state x="651" y="-1440" width="1232" height="1152" key="find.popup" timestamp="1648898929212">
