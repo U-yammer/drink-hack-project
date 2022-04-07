@@ -1,15 +1,22 @@
 /*マイページ*/
 {{ define "content" }}
-<h1>マイページ</h1>
+<body>
+<div class = gray>
+    <h1>Top</h1>
+    <div class = photo><a href="#"><img src="data:image/png;base64,{{ .WImage }}"></a></div>
+    <div class = message>a</div>
+</div>
+<div class = white>
+    <h1>マイページ</h1>
+    <p>[<a href="/todos/new">Create</a>]</p>
+    <hr>
 
-<p>[<a href="/todos/new">Create</a>]</p>
-<hr>
+    {{ range .Todos }}
+    <div>{{ .Content }}</div>
+    <p>[<a href="/todos/edit/{{.ID}}">Edit</a>]</p>
+    <p>[<a href="/todos/delete/{{.ID}}">Delete</a>]</p>
+    <hr>
+</div>
 
-
-{{ range .Todos }}
-<div>{{ .Content }}</div>
-<p>[<a href="/todos/edit/{{.ID}}">Edit</a>]</p>
-<p>[<a href="/todos/delete/{{.ID}}">Delete</a>]</p>
-<hr>
 {{end}}
 {{end}}

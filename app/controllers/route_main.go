@@ -18,16 +18,6 @@ import (
 	この二つを引数にすると，ハンドラ（リクエストを処理できる関数）として定義される仕様
 */
 
-func top(w http.ResponseWriter, r *http.Request) {
-	_, err := session(w, r)
-	if err != nil {
-		renderView(w, "Hello", "layout", "public_navbar", "top")
-	} else {
-		//renderView(w, nil, "layout", "private_navbar", "index")
-		http.Redirect(w, r, "/todos", 302)
-	}
-}
-
 func getEncodePngImage(w http.ResponseWriter, filename string) string {
 	file, err := os.Open("app/views/image/" + filename)
 	defer file.Close()
@@ -41,6 +31,21 @@ func getEncodePngImage(w http.ResponseWriter, filename string) string {
 		log.Fatalln("Unable to encode image.")
 	}
 	return base64.StdEncoding.EncodeToString(buffer.Bytes())
+}
+
+func top(w http.ResponseWriter, r *http.Request) {
+	_, err := session(w, r)
+	if err != nil {
+		/*ここを変更*/
+		encodeImage := getEncodePngImage(w, "water.png")
+		m := map[string]interface{}{
+			"Image": encodeImage,
+		}
+		renderView(w, m, "layout", "public_navbar", "top")
+	} else {
+		//renderView(w, nil, "layout", "private_navbar", "index")
+		http.Redirect(w, r, "/todos", 302)
+	}
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
@@ -59,10 +64,12 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 		user.Todos = todos
 		encodeImage := getEncodePngImage(w, "account_icon.png")
+		encodeWImage := getEncodePngImage(w, "water.png")
 		m := map[string]interface{}{
-			"Image": encodeImage,
-			"Name":  user.Name,
-			"Todos": user.Todos,
+			"Image":  encodeImage,
+			"WImage": encodeWImage,
+			"Name":   user.Name,
+			"Todos":  user.Todos,
 		}
 
 		renderView(w, m, "layout", "private_navbar", "index")
