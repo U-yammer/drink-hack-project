@@ -10,6 +10,7 @@ import (
     "log"
     "net/http"
     "os"
+    "strconv"
 )
 
 /*
@@ -56,13 +57,16 @@ func index(w http.ResponseWriter, r *http.Request) {
             fmt.Println(err)
         }
         todos, _ := user.GetTodosByUser()
+        drinks, _ := user.GetDrinkSumByCategory()
 
         user.Todos = todos
+        user.Drinks = drinks
         encodeImage := getEncodePngImage(w, "account_icon.png")
         m := map[string]interface{}{
-            "Image": encodeImage,
-            "Name":  user.Name,
-            "Todos": user.Todos,
+            "Image":  encodeImage,
+            "Name":   user.Name,
+            "Todos":  user.Todos,
+            "Drinks": user.Drinks,
         }
 
         renderView(w, m, "layout", "private_navbar", "index")
@@ -86,7 +90,32 @@ func registerDrink(w http.ResponseWriter, r *http.Request) {
         renderView(w, m, "layout", "private_navbar", "register_drink")
     }
 }
+func drinkSave(w http.ResponseWriter, r *http.Request) {
+    sess, err := session(w, r)
+    if err != nil {
+        http.Redirect(w, r, "/login", 302)
+    } else {
+        err = r.ParseForm()
+        if err != nil {
+            println(err)
+        }
 
+        user, err := sess.GetUserBySession()
+        if err != nil {
+            log.Println(err)
+        }
+
+        dname := r.PostFormValue("drink")
+        fmt.Println(dname)
+        amount, err := strconv.Atoi(r.PostFormValue("amount"))
+
+        if err := user.CreateDrink(dname, amount); err != nil {
+            log.Println(err)
+        }
+
+        http.Redirect(w, r, "/todos", 302)
+    }
+}
 func todo(w http.ResponseWriter, r *http.Request, id int) {
     sess, err := session(w, r)
     if err != nil {

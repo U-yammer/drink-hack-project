@@ -1,6 +1,14 @@
 {{ define "content" }}
 <div class="management-wrapper">
     <p>その人の飲み物情報を大きく表示したい</p>
+    <ul>
+        {{ range .Drinks }}
+        <li>
+            <h4>{{ .DName }}</h4>
+            <p>{{ .Total }}</p>
+        </li>
+        {{ end }}
+    </ul>
     <a href="/register_drink">今日の飲料記録</a>
 </div>
 

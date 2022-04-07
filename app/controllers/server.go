@@ -39,6 +39,7 @@ func StartMainServer() error {
     http.HandleFunc("/authenticate", authenticate)
     http.HandleFunc("/logout", logout)
     http.HandleFunc("/register_drink", registerDrink)
+    http.HandleFunc("/register_drink/save", drinkSave)
     http.HandleFunc("/todos", index)
     http.HandleFunc("/todos/new", todoNew)
     http.HandleFunc("/todos/save", todoSave)

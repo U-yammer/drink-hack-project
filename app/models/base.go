@@ -1,13 +1,13 @@
 package models
 
 import (
-	"crypto/sha1"
-	"database/sql"
-	"drink_hack_project/config"
-	"fmt"
-	"github.com/google/uuid"
-	_ "github.com/mattn/go-sqlite3"
-	"log"
+    "crypto/sha1"
+    "database/sql"
+    "drink_hack_project/config"
+    "fmt"
+    "github.com/google/uuid"
+    _ "github.com/mattn/go-sqlite3"
+    "log"
 )
 
 var Db *sql.DB
@@ -18,6 +18,8 @@ const (
     tableNameUser    = "users"
     tableNameTodo    = "todos"
     tableNameSession = "sessions"
+    tableNameDrink   = "drinks"
+    tableNameDInfo   = "dInfos"
 )
 
 func init() {
@@ -58,6 +60,18 @@ func init() {
     if err != nil {
         log.Fatalln(err)
     }
+
+    cmdD := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		user_id INTEGER,
+		drink_name STRING,
+		amount INTEGER,
+		created_at DATETIME)`, tableNameDrink)
+    _, err = Db.Exec(cmdD)
+    if err != nil {
+        log.Fatalln(err)
+    }
+
 }
 
 /* uuid(ユーザを一意に識別するID) を生成する関数 */
