@@ -7,41 +7,40 @@ import (
 )
 
 type User struct {
-    ID int
-    UUID string
-    Name string
-    Email string
-    Password string
+    ID        int
+    UUID      string
+    Name      string
+    Email     string
+    Password  string
     CreatedAt time.Time
     Todos     []Todo
+    Drinks    []Drink
 }
 
 type Session struct {
-    ID int
-    UUID string
-    Email string
-    UserID int
+    ID        int
+    UUID      string
+    Email     string
+    UserID    int
     CreatedAt time.Time
 }
 
 type userQuery struct {
-    insertAll string
-    selectAll string
+    insertAll         string
+    selectAll         string
     updatePrimeColumn string
 }
 
 // 本当はconstとして定義したいけど，構造体はそれができないっぽい
 var Query userQuery = userQuery{
-    insertAll :
-    `insert into users (
+    insertAll: `insert into users (
 		uuid,
 		name,
 		email,
 		password,
 		created_at) values (?, ?, ?, ?, ?)`,
 
-    selectAll :
-    `select 
+    selectAll: `select 
 		id, 
 		uuid, 
 		name, 
@@ -50,8 +49,7 @@ var Query userQuery = userQuery{
 		created_at 
 		from users where id = ?`,
 
-    updatePrimeColumn :
-    `update users set
+    updatePrimeColumn: `update users set
 		name = ?, 
 		email = ? 
 		where id = ?`,
@@ -111,9 +109,7 @@ func insertInstance(u *User) (result sql.Result, err error) {
 }
 
 func GetUserByEmail(email string) (user User, err error) {
-    user = User {
-
-    }
+    user = User{}
 
     cmd := `select id, uuid, name, email, password, created_at from users where email = ?`
 

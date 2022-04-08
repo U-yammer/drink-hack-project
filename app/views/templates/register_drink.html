@@ -1,4 +1,17 @@
 {{define "content"}}
-a
-
+<div class="register-drink-wrapper">
+    <h2>今日の飲料記録</h2>
+    <form role="form" action="/register_drink/save" method="post">
+        <p>飲料の選択</p>
+        <select name="drink">
+            <option value="water">水</option>
+            <option value="tea">お茶</option>
+            <option value="cola">コーラ</option>
+            <option value="energy drink">エナジードリンク</option>
+        </select>
+        <p>量を入力してください</p>
+        <input name="amount" type="number" placeholder="10">L
+        <input type="submit" value="登録">
+    </form>
+</div>
 {{end}}

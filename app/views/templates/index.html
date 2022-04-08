@@ -1,22 +1,39 @@
 /*マイページ*/
 {{ define "content" }}
-<body>
 <div class = gray>
-    <h1>Top</h1>
-    <div class = photo><a href="#"><img src="data:image/png;base64,{{ .WImage }}"></a></div>
-    <div class = message>a</div>
+  <div class = photo><a href="#"><img src="data:image/png;base64,{{ .WImage }}"></a></div>
+  <div class="message">
+    <h3>こんにちは, {{.Name}} さん</h3>
+     <p>{{ .Message }}</p>
+  </div>
 </div>
+
 <div class = white>
-    <h1>マイページ</h1>
-    <p>[<a href="/todos/new">Create</a>]</p>
-    <hr>
+  <div class="management-wrapper">
+      <ul>
+          {{ range .Drinks }}
+          <li>
+              <h4>{{ .DName }}</h4>
+              <p>{{ .Total }}</p>
+          </li>
+          {{ end }}
+      </ul>
+      <a href="/register_drink">今日の飲料記録</a>
+  </div>
 
-    {{ range .Todos }}
-    <div>{{ .Content }}</div>
-    <p>[<a href="/todos/edit/{{.ID}}">Edit</a>]</p>
-    <p>[<a href="/todos/delete/{{.ID}}">Delete</a>]</p>
-    <hr>
-</div>
-
-{{end}}
+  <div class="todos-wrapper">
+      <ul class="todos-list">
+          <li>
+              <a class="create-bottom" href="/todos/new">+</a>
+          </li>
+          {{ range .Todos }}
+          <li>
+              {{ if .Content }}
+              <a class="todo" href="/todos/todo/{{.ID}}">{{ .Content }}</a>
+              {{ end }}
+          </li>
+          {{ end }}
+      </ul>
+  </div>
+</div>  
 {{end}}
