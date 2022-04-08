@@ -1,12 +1,25 @@
 {{ define "navbar"}}
-<div class="container">
-    <h2 class="navbar-logo"> Drink Hack </h2>
-    <div class="header-list">
-        <a href="#">
-            <img class="account_icon" src="data:image/png;base64,{{ .Image }}" alt="account">
-        </a>
-        <p>{{ .Name }}</p>
-        <a href="/logout">logout</a>
+    <div class="container">
+        <h2 class="navbar-logo"> Drink Hack </h2>
+        <h4 class = name>ようこそ　{{ .Name }}　さん</h4>
+        <div class="header-list">
+            <a href="#">
+                <img class="account_icon" src="data:image/png;base64,{{ .Image }}" alt="account">
+            </a>
+        </div>
     </div>
-</div>
+
+    <div class="cp_cont">
+        <div class="cp_offcm01">
+            <input type="checkbox" id="cp_toggle01">
+            <label for="cp_toggle01"><span></span></label>
+            <div class="cp_menu">
+                <ul>
+                    <li><a href="/">top</a></li>
+                    <li><a href="/signup">signup</a></li>
+                    <li><a href="/logout">logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 {{end}}

@@ -20,13 +20,18 @@ import (
 */
 
 func top(w http.ResponseWriter, r *http.Request) {
-    _, err := session(w, r)
-    if err != nil {
-        renderView(w, "Hello", "layout", "public_navbar", "top")
-    } else {
-        //renderView(w, nil, "layout", "private_navbar", "index")
-        http.Redirect(w, r, "/todos", 302)
-    }
+	_, err := session(w, r)
+	if err != nil {
+		/*ここを変更*/
+		encodeImage := getEncodePngImage(w, "water.png")
+		m := map[string]interface{}{
+			"Image": encodeImage,
+		}
+		renderView(w, m, "layout", "public_navbar", "top")
+	} else {
+		//renderView(w, nil, "layout", "private_navbar", "index")
+		http.Redirect(w, r, "/todos", 302)
+	}
 }
 
 func getEncodePngImage(w http.ResponseWriter, filename string) string {
@@ -45,6 +50,7 @@ func getEncodePngImage(w http.ResponseWriter, filename string) string {
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
+
     fmt.Println("index_do")
     sess, err := session(w, r)
 
@@ -62,10 +68,12 @@ func index(w http.ResponseWriter, r *http.Request) {
         user.Todos = todos
         user.Drinks = drinks
         drinkMessage := models.GetDrinkMessage()
-        fmt.Println(drinkMessage)
+      
+        encodeWImage := getEncodePngImage(w, "water.png")
         encodeImage := getEncodePngImage(w, "account_icon.png")
         m := map[string]interface{}{
             "Image":   encodeImage,
+            "WImage": encodeWImage,
             "Name":    user.Name,
             "Todos":   user.Todos,
             "Drinks":  user.Drinks,
@@ -167,27 +175,27 @@ func todoNew(w http.ResponseWriter, r *http.Request) {
 }
 
 func todoSave(w http.ResponseWriter, r *http.Request) {
-    sess, err := session(w, r)
-    if err != nil {
-        http.Redirect(w, r, "/login", 302)
-    } else {
-        err = r.ParseForm()
-        if err != nil {
-            println(err)
-        }
+	sess, err := session(w, r)
+	if err != nil {
+		http.Redirect(w, r, "/login", 302)
+	} else {
+		err = r.ParseForm()
+		if err != nil {
+			println(err)
+		}
 
-        user, err := sess.GetUserBySession()
-        if err != nil {
-            log.Println(err)
-        }
+		user, err := sess.GetUserBySession()
+		if err != nil {
+			log.Println(err)
+		}
 
-        content := r.PostFormValue("content")
-        if err := user.CreateTodo(content); err != nil {
-            log.Println(err)
-        }
+		content := r.PostFormValue("content")
+		if err := user.CreateTodo(content); err != nil {
+			log.Println(err)
+		}
 
-        http.Redirect(w, r, "/todos", 302)
-    }
+		http.Redirect(w, r, "/todos", 302)
+	}
 }
 
 func todoEdit(w http.ResponseWriter, r *http.Request, id int) {
@@ -221,7 +229,6 @@ func todoEdit(w http.ResponseWriter, r *http.Request, id int) {
 }
 
 func todoUpdate(w http.ResponseWriter, r *http.Request, id int) {
-
     sess, err := session(w, r)
     if err != nil {
         http.Redirect(w, r, "/login", 302)

@@ -22,9 +22,9 @@ func signup(w http.ResponseWriter, r *http.Request) {
 			log.Println(err)
 		}
 
-		user := models.User {
-			Name: r.PostFormValue("name"),
-			Email: r.PostFormValue("email"),
+		user := models.User{
+			Name:     r.PostFormValue("name"),
+			Email:    r.PostFormValue("email"),
 			Password: r.PostFormValue("password"),
 		}
 
@@ -36,7 +36,7 @@ func signup(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func login (w http.ResponseWriter, r *http.Request) {
+func login(w http.ResponseWriter, r *http.Request) {
 	_, err := session(w, r)
 	if err != nil {
 		renderView(w, nil, "layout", "public_navbar", "login")
@@ -45,7 +45,7 @@ func login (w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func logout (w http.ResponseWriter, r *http.Request) {
+func logout(w http.ResponseWriter, r *http.Request) {
 	cookie, err := r.Cookie("_cookie")
 
 	if err != nil {
@@ -60,7 +60,7 @@ func logout (w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/login", 302)
 }
 
-func authenticate (w http.ResponseWriter, r *http.Request) {
+func authenticate(w http.ResponseWriter, r *http.Request) {
 	err := r.ParseForm()
 	user, err := models.GetUserByEmail(r.PostFormValue("email"))
 	if err != nil {
@@ -75,8 +75,8 @@ func authenticate (w http.ResponseWriter, r *http.Request) {
 		}
 
 		cookie := http.Cookie{
-			Name: "_cookie",
-			Value: session.UUID,
+			Name:     "_cookie",
+			Value:    session.UUID,
 			HttpOnly: true,
 		}
 

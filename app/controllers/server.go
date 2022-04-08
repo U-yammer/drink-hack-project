@@ -27,6 +27,7 @@ func renderView(w http.ResponseWriter, data interface{}, filenames ...string) {
 }
 
 func StartMainServer() error {
+
     /* http request の設定 */
     files := http.FileServer(http.Dir(config.Config.Static))
 
@@ -52,6 +53,7 @@ func StartMainServer() error {
     // 第二引数は，チェインしている
 
     return http.ListenAndServe(":"+config.Config.Port, nil) // handler: nil にするとデフォルトで page not found を返す
+
 }
 
 var validPath = regexp.MustCompile("^/todos/(edit|update|delete|todo)/([0-9]+)$") // 正規表現．todos/edit or update/0~9の繰り返し

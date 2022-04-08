@@ -9,8 +9,9 @@
         <link rel="stylesheet" href="/static/css/layout.css">
         <link rel="stylesheet" href="/static/css/navbar.css">
         <link rel="stylesheet" href="/static/css/form.css">
+        <link rel="stylesheet" href="/static/css/navbar.css">
+        <link rel="stylesheet" href="/static/css/base.css">
         <link rel="stylesheet" href="/static/css/index.css">
-
     </head>
 
     <body>
@@ -21,11 +22,13 @@
             {{template "content" . }}
         </div>
         <footer>
-            <p class="copyright">&copy; 2022 Hackathon Group3</p>
+            <div class="container text-center">
+                <small><p class="copyright">© 2022 Hackathon Group3</p></small>
+            </div>
         </footer>
     </body>
 
-    <script src="/static/js/jquery-3.5.1.min.js"></script>
-    <script src="/static/js/bootstrap.bundle.min.js"></script>
-    </html>
+<script src="/static/js/jquery-3.5.1.min.js"></script>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+</html>
 {{end}}
