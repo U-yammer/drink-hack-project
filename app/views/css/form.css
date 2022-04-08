@@ -113,12 +113,14 @@ a {
     transform: translateX(-250px);
 }
 .cp_offcm01 #cp_toggle01 ~ label::before {
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    content: "\f0c9";/*三本線*/
+    font-family:"Font Awesome 5 Free";
+    content:"≡";
+    font-weight:900;
     font-size: 2em;
 }
 .cp_offcm01 #cp_toggle01:checked ~ label::before {
-    font-weight: 900;
-    content: "\f00d";/*バツ*/
+    font-family:"Font Awesome 5 Free";
+    content:"X";
+    font-weight:900;
+    font-size: 2em;
 }

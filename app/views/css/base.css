@@ -59,13 +59,14 @@ footer {
     position: relative;
     left:320px;
     outline: 2px red solid;
+    top:40px;
     height: 266px;
     width: 400px;
 }
 .message{
     position: relative;
     left:720px;
-    top:-266px;
+    top:-226px;
     outline: 2px red solid;
     height: 266px;
     width: 400px;
